@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        .header-social-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .header-social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .header-social-links a:hover {
+            color: #ddd;
+        }
+
+        /* Mobile Dropdown Styles */
+        nav {
+            position: relative;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                color: white;
+            }
+
+            nav ul li a {
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .header-social-links {
+                justify-content: center;
+                padding: 1rem;
+            }
+        }
+
+        @keyframes glowing {
+            0% { box-shadow: 0 0 5px #ffcc00; }
+            50% { box-shadow: 0 0 20px #ffcc00; }
+            100% { box-shadow: 0 0 5px #ffcc00; }
+        }
+
+        nav ul li a:hover {
+            animation: glowing 1s infinite;
+        }
+
+        /* Hero Section */
+        #hero {
+            background-image: url('https://th.bing.com/th/id/R.8fef6e2475dab1de94ef933efe681838?rik=%2fdNlJkiqv1rqNg&pid=ImgRaw&r=0');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 15rem 1rem;
+            color: white;
+            animation: fadeIn 4s;
+        }
+
+        #hero h1 {
+            margin: 0;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        #hero p {
+            margin: auto;
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* About Section */
+        #about {
+            padding: 5rem 1rem;
+            text-align: center;
+            background-color: #d8d8d800;
+        }
+
+        #about h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            padding: 5rem 1rem;
+            text-align: center;
+            background-color: #d8d8d800;
+        }
+
+        #portfolio h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .portfolio-item {
+            display: inline-block;
+            width: 300px;
+            margin: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            animation: fadeInUp 1s;
+            background-color: #01fcca0c;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .portfolio-item h3 {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-item p {
+            margin: 0 0 1rem 0;
+            padding: 0 1rem;
+            color: #555;
+        }
+
+        /* Services Section */
+        #skills {
+            padding: 5rem 1rem;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .title-box {
+            margin-bottom: 2rem;
+        }
+
+        .title-a {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle-a {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .line-mf {
+            width: 100px;
+            height: 2px;
+            background-color: #333;
+            margin: 1rem auto;
+        }
+
+        .service-box {
+            margin-bottom: 2rem;
+            padding: 2rem 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            animation: fadeInUp 1s;
+            background-color: #f4f4f4;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-ico {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .ico-circle {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .service-content {
+            padding: 1rem;
+        }
+
+        .s-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .s-description {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 5rem 1rem;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        #contact h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        #contact form {
+            display: inline-block;
+            text-align: left;
+            max-width: 500px;
+            width: 100%;
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        #contact label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contact button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #contact button:hover {
+            background-color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="header-social-links">
+                    <a href="https://www.instagram.com/thee_chrisitian?igsh=MTZwbm9rM2czM3U4Mw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Christian Mungai</h1>
+        <p>Web Developer & Designer</p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I'm a web developer with a passion for creating beautiful and functional websites. With years of experience in Software Development, I have honed my skills in HTML, CSS, JavaScript, and various frameworks. I love solving problems and bringing ideas to life through code.</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-item">
+            <img src="https://via.placeholder.com/300" alt="Project 1">
+            <h3>Project 1</h3>
+            <p>Description of Project 1</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://via.placeholder.com/300" alt="Project 2">
+            <h3>Project 2</h3>
+            <p>Description of Project 2</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="title-box">
+            <h2 class="title-a">Skills</h2>
+            <div class="line-mf"></div>
+        </div>
+        <div class="service-box">
+            <div class="service-ico">
+                <span class="ico-circle"><i class="fas fa-code"></i></span>
+            </div>
+            <div class="service-content">
+                <h3 class="s-title">Web Development</h3>
+                <p class="s-description">Expert in HTML, CSS, JavaScript, and modern web frameworks.</p>
+            </div>
+        </div>
+        <div class="service-box">
+            <div class="service-ico">
+                <span class="ico-circle"><i class="fab fa-react"></i></span>
+            </div>
+            <div class="service-content">
+                <h3 class="s-title">React</h3>
+                <p class="s-description">Skilled in building dynamic, component-based user interfaces with React.</p>
+            </div>
+        </div>
+        <div class="service-box">
+            <div class="service-ico">
+                <span class="ico-circle"><i class="fas fa-server"></i></span>
+            </div>
+            <div class="service-content">
+                <h3 class="s-title">Django</h3>
+                <p class="s-description">Experienced in developing robust backends and APIs with Django.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm" action="send_email.php" method="post">
+            <input type="hidden" id="recipientEmail" name="recipientEmail" value="christianmungai1@gmail.com">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Christian Mungai. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#contactForm').submit(function(event) {
+                event.preventDefault();
+                var formData = {
+                    recipientEmail: $('#recipientEmail').val(),
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    message: $('#message').val()
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: 'send_email.php',
+                    data: formData,
+                    dataType: 'json',
+                    encode: true,
+                    success: function(response) {
+                        alert('Message sent successfully!');
+                    },
+                    error: function(error) {
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+            });
+
+            $('#mobile-menu').click(function() {
+                $('nav ul').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
